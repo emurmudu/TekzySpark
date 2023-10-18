@@ -75,14 +75,14 @@ const SignIn = () => {
                         </div>
                     </div>
                     <div className="form-control mt-6">
-                        <button className="btn btn-outline btn-accent">Sign In</button>
+                        <button className="btn btn-outline ">Sign In</button>
                         <ToastContainer />
                         {
                             userError && <p className=" text-red-600 mt-2">{userError}</p>
                         }
                     </div>
-                    <p>Not have an account? <NavLink className=" text-purple-600 font-bold" to="/signUp">Sign Up</NavLink></p>
-                    <p>Login with <button onClick={handleGoogleSignIn} className="btn btn-ghost">Google</button></p>
+                    <p>Not have an account? <NavLink className=" font-bold" to="/signUp">Sign Up</NavLink></p>
+                    <p>Login with <button onClick={handleGoogleSignIn} className=" font-bold">Google</button></p>
                 </form>
 
 

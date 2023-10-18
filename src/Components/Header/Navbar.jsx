@@ -9,7 +9,7 @@ const Navbar = () => {
 
     const handleLogOUt = () => {
         logOut()
-            .then(() => toast('You are logged out'))
+            .then(() => toast('You are signed out'))
             .catch(error => console.error(error))
     }
 
@@ -29,9 +29,9 @@ const Navbar = () => {
     </>
 
     return (
-        <div className="navbar border-b-4 border-teal-500 container mx-auto">
+        <div className="navbar container bg-base-200 mx-auto px-4 ">
             <div className="navbar-start">
-                <div className="dropdown text-teal-600 font-bold">
+                <div className="dropdown font-bold">
                     <label tabIndex={0} className="btn btn-ghost btn-circle">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
                     </label>
@@ -41,27 +41,27 @@ const Navbar = () => {
                 </div>
             </div>
             <div className="navbar-center">
-                <a href="#" className=" cursor-pointer normal-case text-xl text-teal-600 font-extrabold lg:text-3xl">TekzySpark</a>
+                <a href="#" className=" cursor-pointer normal-case text-xl font-extrabold lg:text-3xl"><NavLink to='/'>TekzySpark</NavLink></a>
             </div>
             <div className="navbar-end">
-                {/* <button className="btn btn-ghost">
-                    <span><NavLink to="/myCart">My Cart</NavLink></span>
-                </button> */}
+                <button className="hidden lg:block lg:px-4">
+                    <a ><NavLink to="/myCart">My Cart</NavLink></a>
+                </button>
                 {
                     user ? <>
-                        <span className=" text-teal-600 font-bold p-2">{user.displayName
+                        <span className="  font-bold p-2">{user.displayName
                         }</span>
                         <div className="flex items-center">
 
                             <img className="btn btn-ghost btn-circle avatar" src={user.photoURL
                             } />
-                            <a onClick={handleLogOUt} className="btn btn-sm text-teal-600 font-bold">Sign Out</a>
+                            <a onClick={handleLogOUt} className="btn btn-sm font-bold">Sign Out</a>
                             <ToastContainer />
                         </div>
                     </>
                         :
                         <NavLink to="/signIn">
-                            <a className=" text-teal-600 font-bold">Sing In</a>
+                            <a className=" font-bold">Sing In</a>
                         </NavLink>
                 }
             </div>

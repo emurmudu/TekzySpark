@@ -89,13 +89,13 @@ const SignUp = () => {
 
                     </div>
                     <div className="form-control mt-6">
-                        <button className="btn btn-outline btn-accent">Sign Up</button>
+                        <button className="btn btn-outline">Sign Up</button>
                         <ToastContainer />
                         {
                             signUpError && <p className=" text-red-600 mt-2">{signUpError}</p>
                         }
                     </div>
-                    <p>Have an account? <NavLink className=" text-pink-400 font-bold" to="/SignIn">Sign In</NavLink></p>
+                    <p>Have an account? <NavLink className=" font-bold" to="/SignIn">Sign In</NavLink></p>
                 </form>
 
 
