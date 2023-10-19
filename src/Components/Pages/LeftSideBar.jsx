@@ -48,11 +48,13 @@ const LeftSideBar = () => {
             </div>
 
             <div className="hidden lg:block">
-                <h1 className=" p-4 text-3xl border-b-4 border-t-4 mb-4">FEATURED <br /> PRODUCTS</h1>
+                <h1 className=" p-4 text-3xl mb-4">BEST <br /> SELLING PRODUCTS</h1>
                 <div className="space-y-4 p-4">
-                    <img src={'https://i.ibb.co/PQDzvXJ/watch-1.jpg'} alt="" />
-                    <img src={'https://i.ibb.co/jyGrwKq/VR.jpg'} alt="" />
-                    <img src={'https://i.ibb.co/kq1LxLt/left-1.jpg'} alt="" />
+                    <img src={'https://i.ibb.co/bbwpfxx/watch2.jpg'} alt="" />
+                    <img src={'https://i.ibb.co/xGXKMVk/cannon2.jpg'} alt="" />
+                    <img src={'https://i.ibb.co/chSC0Mg/apple1.jpg'} alt="" />
+                    <img src={'https://i.ibb.co/5YPNd3m/vr2.jpg'} alt="" />
+                    <img src={'https://i.ibb.co/C6jj1H7/samsung1.jpg'} alt="" />
                 </div>
             </div>
         </div>
