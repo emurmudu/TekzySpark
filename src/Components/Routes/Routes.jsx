@@ -7,6 +7,9 @@ import MyCart from "../Pages/MyCart";
 import SignIn from "../Users/SignIn";
 import SignUp from "../Users/SignUp";
 import PrivateRoutes from "./PrivateRoutes";
+import BrandDetails from "../Brand/BrandDetails";
+import UpdateProduct from "../Forms/UpdateProduct";
+import ProductDetails from "../Brand/ProductDetails";
 
 const router = createBrowserRouter([
     {
@@ -35,6 +38,18 @@ const router = createBrowserRouter([
                 path: '/signUp',
                 element: <SignUp></SignUp>
             },
+            {
+                path: '/brandDetails',
+                element: <BrandDetails></BrandDetails>
+            },
+            {
+                path: '/updateProduct',
+                element: <PrivateRoutes><UpdateProduct></UpdateProduct></PrivateRoutes>
+            },
+            {
+                path: '/productDetails',
+                element: <PrivateRoutes><ProductDetails></ProductDetails></PrivateRoutes>
+            }
 
         ]
     },
