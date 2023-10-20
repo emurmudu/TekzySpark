@@ -25,12 +25,12 @@ const UpdateProduct = () => {
 
     return (
         <div className=" container mx-auto text-center">
-            <div className="p-24">
-                <h1 className=" text-3xl font-extrabold">Update Product</h1>
+            <div className=" p-10 md:p-24">
+                <h1 className=" text-xl md:text-3xl font-extrabold mb-4 md:mb-6">Update Product</h1>
                 <form onSubmit={handleUpdateProduct}>
                     {/* product name & brand name row */}
-                    <div className="md:flex mb-3 ">
-                        <div className="form-control md:w-1/2">
+                    <div className="flex flex-col md:flex-row mb-3 ">
+                        <div className="form-control mb-3 md:mb-0 md:w-1/2">
                             <label className="label">
                                 <span className="label-text">Product Name</span>
                             </label>
@@ -38,7 +38,7 @@ const UpdateProduct = () => {
                                 <input type="text" name="name" placeholder="Product Name" className="input input-bordered w-full" />
                             </label>
                         </div>
-                        <div className="form-control md:w-1/2 ml-14">
+                        <div className="form-control md:w-1/2 md:ml-4">
                             <label className="label">
                                 <span className="label-text">Brand Name</span>
                             </label>
@@ -55,8 +55,8 @@ const UpdateProduct = () => {
                         </div>
                     </div>
                     {/* type and price row */}
-                    <div className="md:flex mb-3">
-                        <div className="form-control md:w-1/2">
+                    <div className="flex flex-col md:flex-row mb-3">
+                        <div className="form-control md:w-1/2 md:mb-0">
                             <label className="label">
                                 <span className="label-text">Type</span>
                             </label>
@@ -71,7 +71,7 @@ const UpdateProduct = () => {
                                 </select>
                             </label>
                         </div>
-                        <div className="form-control md:w-1/2 ml-14">
+                        <div className="form-control md:w-1/2 md:ml-4">
                             <label className="label">
                                 <span className="label-text">Price</span>
                             </label>
@@ -81,8 +81,8 @@ const UpdateProduct = () => {
                         </div>
                     </div>
                     {/* rating & image url row */}
-                    <div className="md:flex mb-3">
-                        <div className="form-control md:w-1/2">
+                    <div className="flex flex-col md:flex-row mb-3">
+                        <div className="form-control mb-3 md:mb-0 md:w-1/2">
                             <label className="label">
                                 <span className="label-text">Rating</span>
                             </label>
@@ -90,7 +90,7 @@ const UpdateProduct = () => {
                                 <input type="number" name="rating" placeholder="Rating" min='1' max='5' className="input input-bordered w-full" />
                             </label>
                         </div>
-                        <div className="form-control md:w-1/2 ml-14">
+                        <div className="form-control md:w-1/2 md:ml-4">
                             <label className="label">
                                 <span className="label-text">Photo URL</span>
                             </label>
