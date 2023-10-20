@@ -4,7 +4,10 @@ import RightSideBar from "./RightSideBar";
 import brandInfo from '../../../src/json/brand.json';
 import { NavLink } from "react-router-dom";
 
+
 const Home = () => {
+
+    // console.log(products);
     return (
         <div className="container mx-auto p-4">
             <Banner></Banner>
@@ -29,6 +32,7 @@ const Home = () => {
 
                         </div>
                     ))}
+
                 </div>
                 <div className="">
                     <RightSideBar></RightSideBar>

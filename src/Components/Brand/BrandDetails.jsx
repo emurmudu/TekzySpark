@@ -1,18 +1,41 @@
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useLoaderData, useParams } from "react-router-dom";
 import Slider from "./Slider";
 import { useEffect, useState } from "react";
 
 
 const BrandDetails = () => {
+    // const singleProduct = useLoaderData();
+    // const { brandName } = useParams();
+    // const [products, setProducts] = useState([]);
+    // const [isLoading, setIsLoading] = useState(true);
 
+    // useEffect(() => {
+    //     const fetchProducts = async () => {
 
+    //         try {
+    //             const response = await fetch(`http://localhost:5001/product/${brandName}`);
+    //             if (!response.ok) {
+    //                 throw new Error('Failed to fetch products');
+    //             }
+    //             const data = await response.json();
+    //             setProducts(data);
+    //         } catch (error) {
+    //             console.error('Error fetching products:', error);
+    //         } finally {
+    //             setIsLoading(false);
+    //         }
+    //     };
+
+    //     fetchProducts();
+    // }, [brandName]);
+
+    const singleProduct = useLoaderData();
     const { brandName } = useParams();
     const [products, setProducts] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         const fetchProducts = async () => {
-
             try {
                 const response = await fetch(`http://localhost:5001/product/${brandName}`);
                 if (!response.ok) {
@@ -72,13 +95,11 @@ const BrandDetails = () => {
 
                                     </div>
                                     <p className=" text-justify">{product.description}</p>
-                                    <div className="card-actions flex justify-between mt-4">
-                                        <NavLink to='/productDetails'>
-                                            <button className=" btn btn-outline">Details</button>
+                                    <div className=" mt-4">
+                                        <NavLink to={`/productDetails/${product._id}`}>
+                                            <button className=" btn btn-outline w-full">Details</button>
                                         </NavLink>
-                                        <NavLink to='/updateProduct'>
-                                            <button className=" btn btn-outline">Update</button>
-                                        </NavLink>
+
                                     </div>
                                 </div>
 
