@@ -10,6 +10,7 @@ import PrivateRoutes from "./PrivateRoutes";
 import BrandDetails from "../Brand/BrandDetails";
 import UpdateProduct from "../Forms/UpdateProduct";
 import ProductDetails from "../Brand/ProductDetails";
+import Users from "../Users/Users";
 
 const router = createBrowserRouter([
     {
@@ -40,17 +41,17 @@ const router = createBrowserRouter([
                 element: <SignUp></SignUp>
             },
             {
+                path: '/users',
+                element: <PrivateRoutes><Users></Users></PrivateRoutes>,
+                loader: () => fetch('http://localhost:5001/user')
+            },
+            {
                 path: '/brandDetails/:brandName',
                 element: <BrandDetails></BrandDetails>,
                 loader: ({ params }) => fetch(`http://localhost:5001/product/${params.brandName}`),
 
             },
-            // {
-            //     path: '/brandDetails',
-            //     element: <BrandDetails></BrandDetails>,
-            //     // loader: () => fetch('http://localhost:5001/product')
 
-            // },
 
             {
                 path: '/updateProduct',

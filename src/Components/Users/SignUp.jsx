@@ -41,9 +41,31 @@ const SignUp = () => {
         createUser(email, password)
             .then(result => {
                 console.log(result.user)
-                toast('You have registered successfully', {
-                    position: toast.POSITION.TOP_CENTER,
-                });
+
+                const createAt = result.user?.metadata?.creationTime;
+                const user = { name, email, password, createAt: createAt };
+                fetch('http://localhost:5001/user', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(user)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.insertedId) {
+                            // alert('Data inserted');
+                            toast('SignUp successfully', {
+                                position: toast.POSITION.TOP_CENTER,
+                            });
+                            e.target.reset();
+                            navigate("/");
+                        }
+                    })
+
+
+
+
                 e.target.reset();
                 navigate("/");
 

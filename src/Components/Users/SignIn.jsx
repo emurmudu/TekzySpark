@@ -26,6 +26,24 @@ const SignIn = () => {
         signInWithUser(email, password)
             .then(result => {
                 console.log(result.user)
+                const user = {
+                    email,
+                    lastLogged: result.user?.metadata?.lastSignInTime
+                }
+                // update last logged at in the database
+                fetch('http://localhost:5001/user', {
+                    method: 'PATCH',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(user)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                    })
+
+
                 toast('Login Successful!');
                 e.target.reset();
                 navigate("/");
