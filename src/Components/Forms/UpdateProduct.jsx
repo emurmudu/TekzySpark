@@ -1,34 +1,49 @@
-
+import { useState } from "react";
+import { useParams } from "react-router-dom";
 
 const UpdateProduct = () => {
+    const { productId } = useParams();
+    const history = history();
+    const [product, setProduct] = useState({
+        productName: "",
+        brand: "",
+        type: "",
+        price: 0,
+        rating: 0,
+        description: "",
+        photo: "",
+    });
 
-
-    const handleUpdateProduct = event => {
+    const handleUpdateProduct = async (event) => {
         event.preventDefault();
 
-        const form = event.target;
-        const name = form.name.value;
-        const brand = form.brand.value;
-        const type = form.type.value;
-        const price = form.price.value;
-        const rating = form.rating.value;
-        const photo = form.photo.value;
-        const description = form.description.value;
+        try {
+            const response = await fetch(`http://localhost:5001/updateCartItem/${productId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'user-email': loggedInUserEmail, // Make sure to define loggedInUserEmail
+                },
+                body: JSON.stringify(product),
+            });
 
-        const updatedProduct = { name, brand, type, price, rating, description, photo };
-        console.log(updatedProduct);
+            if (!response.ok) {
+                throw new Error('Failed to update cart item');
+            }
 
-
-    }
-
-
-
+            console.log('Cart item updated successfully');
+            // Redirect to the cart page or other action after a successful update
+            history.push('/myCart');
+        } catch (error) {
+            console.error('Error updating cart item:', error);
+        }
+    };
     return (
-        <div className=" container mx-auto text-center">
-            <div className=" p-10 md:p-24">
-                <h1 className=" text-xl md:text-3xl font-extrabold mb-4 md:mb-6">Update Product</h1>
+        <div className="container mx-auto text-center">
+            <div>
+                <h1 className="text-xl md:text-3xl font-extrabold mb-4 md:mb-6">Update Product</h1>
                 <form onSubmit={handleUpdateProduct}>
-                    {/* product name & brand name row */}
+
                     <div className="flex flex-col md:flex-row mb-3 ">
                         <div className="form-control mb-3 md:mb-0 md:w-1/2">
                             <label className="label">
@@ -110,6 +125,29 @@ const UpdateProduct = () => {
                             </label>
                         </div>
                     </div>
+
+                    {/* product name & brand name row */}
+                    <div className="flex flex-col md:flex-row mb-3">
+                        <div className="form-control mb-3 md:mb-0 md:w-1/2">
+                            <label className="label">
+                                <span className="label-text">Product Name</span>
+                            </label>
+                            <label className="input-group">
+                                <input
+                                    type="text"
+                                    name="productName"
+                                    placeholder="Product Name"
+                                    className="input input-bordered w-full"
+                                    value={product.productName}
+                                    onChange={(e) => setProduct({ ...product, productName: e.target.value })}
+                                />
+                            </label>
+                        </div>
+                        {/* ... other form inputs ... */}
+                    </div>
+
+                    {/* ... rest of your form fields ... */}
+
                     <input type="submit" value="Update Product" className="btn btn-block" />
                 </form>
             </div>
