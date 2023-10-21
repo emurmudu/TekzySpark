@@ -14,7 +14,7 @@ const MyCart = () => {
 
     const fetchCart = async () => {
         try {
-            const response = await fetch(`http://localhost:5001/getCart`, {
+            const response = await fetch(`https://mission-10-server-1i8zaou17-emurmudu.vercel.app/getCart`, {
                 headers: {
                     "user-email": loggedInUserEmail,
                 },
@@ -35,7 +35,7 @@ const MyCart = () => {
 
     const handleDeleteProduct = async (cartItemId) => {
         try {
-            const response = await fetch(`http://localhost:5001/deleteCartItem/${cartItemId}`, {
+            const response = await fetch(`https://mission-10-server-1i8zaou17-emurmudu.vercel.app/deleteCartItem/${cartItemId}`, {
                 method: 'DELETE',
                 headers: {
                     'user-email': loggedInUserEmail,
@@ -55,7 +55,7 @@ const MyCart = () => {
 
     const handleUpdateProduct = async (cartItemId, updatedQuantity) => {
         try {
-            const response = await fetch(`http://localhost:5001/updateCartItem/${cartItemId}`, {
+            const response = await fetch(`https://mission-10-server-1i8zaou17-emurmudu.vercel.app/updateCartItem/${cartItemId}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',

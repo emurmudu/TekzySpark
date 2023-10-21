@@ -21,7 +21,7 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
-                // loader: () => fetch('http://localhost:5001/product')
+                // loader: () => fetch('https://mission-10-server-1i8zaou17-emurmudu.vercel.app/product')
             },
             {
                 path: '/addProduct',
@@ -45,12 +45,12 @@ const router = createBrowserRouter([
             {
                 path: '/users',
                 element: <PrivateRoutes><Users></Users></PrivateRoutes>,
-                loader: () => fetch('http://localhost:5001/user')
+                loader: () => fetch('https://mission-10-server-1i8zaou17-emurmudu.vercel.app/user')
             },
             {
                 path: '/brandDetails/:brandName',
                 element: <BrandDetails></BrandDetails>,
-                loader: ({ params }) => fetch(`http://localhost:5001/product/${params.brandName}`),
+                loader: ({ params }) => fetch(`https://mission-10-server-1i8zaou17-emurmudu.vercel.app/product/${params.brandName}`),
 
             },
 
@@ -58,13 +58,13 @@ const router = createBrowserRouter([
             {
                 path: '/updateProduct',
                 element: <PrivateRoutes><UpdateProduct></UpdateProduct></PrivateRoutes>,
-                // loader: ({ params }) => fetch(`http://localhost:5001/getCart/${params.id}`)
+                // loader: ({ params }) => fetch(`https://mission-10-server-1i8zaou17-emurmudu.vercel.app/getCart/${params.id}`)
 
             },
             {
                 path: "/productDetails/:id",
                 element: <PrivateRoutes><ProductDetails></ProductDetails></PrivateRoutes>,
-                loader: ({ params }) => fetch(`http://localhost:5001/productById/${params.id}`)
+                loader: ({ params }) => fetch(`https://mission-10-server-1i8zaou17-emurmudu.vercel.app/productById/${params.id}`)
             },
 
 

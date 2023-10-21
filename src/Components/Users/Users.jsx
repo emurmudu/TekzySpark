@@ -7,7 +7,7 @@ const Users = () => {
 
     const handleDelete = id => {
         //make sure user is confirmed to delete
-        fetch(`http://localhost:5001/user/${id}`, {
+        fetch(`https://mission-10-server-1i8zaou17-emurmudu.vercel.app/user/${id}`, {
             method: 'DELETE'
 
         })

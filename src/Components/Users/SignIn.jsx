@@ -31,7 +31,7 @@ const SignIn = () => {
                     lastLogged: result.user?.metadata?.lastSignInTime
                 }
                 // update last logged at in the database
-                fetch('http://localhost:5001/user', {
+                fetch('https://mission-10-server-1i8zaou17-emurmudu.vercel.app/user', {
                     method: 'PATCH',
                     headers: {
                         'content-type': 'application/json'

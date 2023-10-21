@@ -18,7 +18,7 @@ const UpdateProduct = () => {
         event.preventDefault();
 
         try {
-            const response = await fetch(`http://localhost:5001/updateCartItem/${productId}`, {
+            const response = await fetch(`https://mission-10-server-1i8zaou17-emurmudu.vercel.app/updateCartItem/${productId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
