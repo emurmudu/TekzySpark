@@ -9,6 +9,7 @@ const BrandDetails = () => {
     // const singleProduct = useLoaderData();
     const { brandName } = useParams();
     const [products, setProducts] = useState([]);
+    const [visibleProducts, setVisibleProducts] = useState(4);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -30,7 +31,13 @@ const BrandDetails = () => {
         fetchProducts();
     }, [brandName]);
 
+    const handleViewMore = () => {
+        setVisibleProducts(visibleProducts + 4);
+    };
+
     return (
+
+
         <div>
             {/* slider section  */}
             <div className="hidden lg:block container mx-auto text-center mt-4 m-4">
@@ -47,7 +54,7 @@ const BrandDetails = () => {
                     <p className=" flex justify-center items-center md:text-5xl">Product is coming soon!</p>
                 ) : (
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        {products.map(product => (
+                        {products.slice(0, visibleProducts).map(product => (
                             <div key={product._id} className="overflow-hidden border rounded-lg">
                                 <img
                                     src={product.photo}
@@ -61,7 +68,6 @@ const BrandDetails = () => {
                                             <h2 className="text-lg md:text-xl lg:text-2xl font-semibold">{product.name} </h2>
                                             <h2 className=" text-xs md:text-sm lg:text-base">Rating : {product.rating} </h2>
                                         </div>
-
                                     </div>
                                     <div className=" text-left">
                                         <div>
@@ -69,25 +75,28 @@ const BrandDetails = () => {
                                             <h2>Price : {product.price} </h2>
                                             <h2>Brand : {product.brand} </h2>
                                         </div>
-
                                     </div>
                                     <p className=" text-justify">{product.description}</p>
                                     <div className=" mt-4">
                                         <NavLink to={`/productDetails/${product._id}`}>
-                                            <button className=" btn btn-outline w-full">Details</button>
+                                            <button className=" btn btn-outline dark:btn-neutral w-full">Details</button>
                                         </NavLink>
-
                                     </div>
                                 </div>
-
                             </div>
                         ))}
                     </div>
                 )}
+
+                {/* View More button */}
+                {products.length > visibleProducts && (
+                    <div className="text-center mt-4">
+                        <button className="btn btn-outline" onClick={handleViewMore}>
+                            View More
+                        </button>
+                    </div>
+                )}
             </div>
-
-
-
         </div>
     );
 };

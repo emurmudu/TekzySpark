@@ -44,26 +44,26 @@ const AddProduct = () => {
 
 
     return (
-        <div className=" container mx-auto text-center">
-            <div className=" p-10 md:p-24">
+        <div className="  container mx-auto text-center">
+            <div className=" dark:bg-zinc-800  p-10 md:p-24">
                 <h1 className=" text-xl md:text-3xl font-extrabold mb-4 md:mb-6">Add Product</h1>
-                <form onSubmit={handleAddProduct}>
+                <form className="border px-2 pb-2" onSubmit={handleAddProduct}>
                     {/* product name & brand name row */}
                     <div className="flex flex-col md:flex-row mb-3 ">
                         <div className="form-control mb-3 md:mb-0 md:w-1/2">
                             <label className="label">
-                                <span className="label-text">Product Name</span>
+                                <span className="label-text dark:text-white ">Product Name</span>
                             </label>
                             <label className="input-group">
-                                <input type="text" name="name" placeholder="Product Name" className="input input-bordered w-full" />
+                                <input type="text" name="name" placeholder="Product Name" className="input input-bordered w-full dark:bg-zinc-700" />
                             </label>
                         </div>
                         <div className="form-control md:w-1/2 md:ml-4">
                             <label className="label">
-                                <span className="label-text">Brand Name</span>
+                                <span className="label-text dark:text-white ">Brand Name</span>
                             </label>
                             <label className="input-group">
-                                <select className="w-full input input-bordered" placeholder="Brand Name" name="brand" id="">
+                                <select className="w-full input input-bordered dark:bg-zinc-700" placeholder="Brand Name" name="brand" id="">
                                     <option value="Samsung">Samsung</option>
                                     <option value="Apple">Apple</option>
                                     <option value="Facebook">Facebook</option>
@@ -78,10 +78,10 @@ const AddProduct = () => {
                     <div className="flex flex-col md:flex-row mb-3">
                         <div className="form-control md:w-1/2 md:mb-0">
                             <label className="label">
-                                <span className="label-text">Type</span>
+                                <span className="label-text dark:text-white ">Type</span>
                             </label>
                             <label className="input-group">
-                                <select className="w-full input input-bordered" placeholder="Type" name="type" id="">
+                                <select className="w-full input input-bordered dark:bg-zinc-700" placeholder="Type" name="type" id="">
                                     <option value="Laptop">Laptop</option>
                                     <option value="Mobile">Mobile</option>
                                     <option value="Smart Watch">Smart Watch</option>
@@ -93,10 +93,10 @@ const AddProduct = () => {
                         </div>
                         <div className="form-control md:w-1/2 md:ml-4">
                             <label className="label">
-                                <span className="label-text">Price</span>
+                                <span className="label-text dark:text-white ">Price</span>
                             </label>
                             <label className="input-group">
-                                <input type="number" name="price" placeholder="Price" className="input input-bordered w-full" />
+                                <input type="number" name="price" placeholder="Price" className="input input-bordered w-full dark:bg-zinc-700" />
                             </label>
                         </div>
                     </div>
@@ -104,18 +104,18 @@ const AddProduct = () => {
                     <div className="flex flex-col md:flex-row mb-3">
                         <div className="form-control mb-3 md:mb-0 md:w-1/2">
                             <label className="label">
-                                <span className="label-text">Rating</span>
+                                <span className="label-text dark:text-white ">Rating</span>
                             </label>
                             <label className="input-group">
-                                <input type="number" name="rating" placeholder="Rating" min='1' max='5' className="input input-bordered w-full" />
+                                <input type="number" name="rating" placeholder="Rating" min='1' max='5' className="input input-bordered w-full dark:bg-zinc-700" />
                             </label>
                         </div>
                         <div className="form-control md:w-1/2 md:ml-4">
                             <label className="label">
-                                <span className="label-text">Photo URL</span>
+                                <span className="label-text dark:text-white ">Photo URL</span>
                             </label>
                             <label className="input-group">
-                                <input type="text" name="photo" placeholder="Photo URL" className="input input-bordered w-full" />
+                                <input type="text" name="photo" placeholder="Photo URL" className="input input-bordered w-full dark:bg-zinc-700" />
                             </label>
                         </div>
                     </div>
@@ -123,14 +123,14 @@ const AddProduct = () => {
                     <div className=" mb-8">
                         <div className="form-control w-full">
                             <label className="label">
-                                <span className="label-text">Short Description</span>
+                                <span className="label-text dark:text-white ">Short Description</span>
                             </label>
                             <label className="input-group">
-                                <textarea className="input input-bordered w-full" name="description" id="" cols="50" rows="4"></textarea>
+                                <textarea className="input input-bordered w-full dark:bg-zinc-700" name="description" id="" cols="50" rows="4"></textarea>
                             </label>
                         </div>
                     </div>
-                    <input type="submit" value="Add Product" className="btn btn-block" />
+                    <input type="submit" value="Add Product" className="btn btn-block dark:btn-neutral btn-outline" />
                 </form>
             </div>
         </div>

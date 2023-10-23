@@ -93,9 +93,9 @@ const ProductDetails = () => {
                                     </div>
                                 </div>
                                 <p className="text-justify">{product.description}</p>
-                                <div className="mt-4">
+                                <div className="mt-4 ">
                                     <button
-                                        className="btn btn-outline w-full"
+                                        className="btn btn-outline dark:btn-neutral dark:bg-gray-800 w-full"
                                         onClick={addToCart}
                                         disabled={isAddingToCart}
                                     >

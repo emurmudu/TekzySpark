@@ -1,10 +1,41 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { AuthContext } from "../Providers/AuthProvider";
+import { VscColorMode } from 'react-icons/vsc';
 
 const Navbar = () => {
+    const [mode, setMode] = useState("light");
+    function toggleMode() {
+        const html = document.documentElement;
+        if (mode == "light") {
+            html.classList.add("dark");
+            setMode('dark');
+            localStorage.setItem("mode", "dark");
+        } else {
+            html.classList.remove("dark");
+            html.classList.add("light");
+            setMode("light");
+            localStorage.setItem("mode", "light");
+        }
+    }
+
+
+    useEffect(() => {
+        const currenMode = localStorage.getItem("mode") || "light";
+        if (currenMode) {
+            setMode(currenMode);
+        }
+        const html = document.documentElement
+        html.classList.add(currenMode);
+    }, []);
+
+
+
+
+
+
     const { user, logOut } = useContext(AuthContext);
 
     const handleLogOUt = () => {
@@ -29,13 +60,13 @@ const Navbar = () => {
     </>
 
     return (
-        <div className="navbar container bg-base-200 mx-auto px-4 ">
+        <div className="navbar bg-base-200 dark:text-gray-100 dark:bg-zinc-700 container mx-auto px-4 ">
             <div className="navbar-start">
-                <div className="dropdown font-bold">
+                <div className="dropdown font-bold  ">
                     <label tabIndex={0} className="btn btn-ghost btn-circle">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
                     </label>
-                    <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                    <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow dark:text-gray-100 dark:bg-zinc-700 bg-base-100 rounded-box w-52">
                         {navLinks}
                     </ul>
                 </div>
@@ -64,6 +95,12 @@ const Navbar = () => {
                             <a className=" font-bold">Sing In</a>
                         </NavLink>
                 }
+            </div>
+            {/* <div className="fixed top-11 right-10"> */}
+            <div className="ml-2">
+                <button className="text-right" onClick={toggleMode}>
+                    <VscColorMode />
+                </button>
             </div>
         </div>
     );
