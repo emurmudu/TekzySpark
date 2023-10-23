@@ -91,7 +91,7 @@ const BrandDetails = () => {
                 {/* View More button */}
                 {products.length > visibleProducts && (
                     <div className="text-center mt-4">
-                        <button className="btn btn-outline" onClick={handleViewMore}>
+                        <button className="btn btn-outline dark:btn-neutral" onClick={handleViewMore}>
                             View More
                         </button>
                     </div>

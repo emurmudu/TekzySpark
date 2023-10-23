@@ -82,11 +82,11 @@ const Navbar = () => {
                     user ? <>
                         <span className=" hidden lg:block font-bold p-2">{user.displayName
                         }</span>
-                        <div className="flex items-center">
+                        <div className="flex items-center gap-1">
 
                             <img className="hidden md:block btn btn-ghost btn-circle avatar" src={user.photoURL
                             } />
-                            <a onClick={handleLogOUt} className="btn btn-sm font-bold">Sign Out</a>
+                            <a onClick={handleLogOUt} className="btn btn-sm font-bold dark:text-white dark:bg-zinc-700">Sign Out</a>
                             <ToastContainer />
                         </div>
                     </>
