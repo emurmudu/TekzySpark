@@ -9,13 +9,15 @@ const ProductDetails = () => {
     const [product, setProduct] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [isAddingToCart, setIsAddingToCart] = useState(false);
+    console.log('from productDetails use params id :', id);
+    console.log('from productDetails useState product :', product);
 
     const { loggedInUserEmail } = useContext(AuthContext);
 
     useEffect(() => {
         const fetchProductDetails = async () => {
             try {
-                const response = await fetch(`https://mission-10-server-1i8zaou17-emurmudu.vercel.app/productById/${id}`);
+                const response = await fetch(`http://localhost:5001/productById/${id}`);
                 if (!response.ok) {
                     throw new Error("Failed to fetch product details");
                 }
@@ -34,7 +36,7 @@ const ProductDetails = () => {
     const addToCart = async () => {
         try {
             setIsAddingToCart(true);
-            const response = await fetch(`https://mission-10-server-1i8zaou17-emurmudu.vercel.app/addToCart`, {
+            const response = await fetch(`http://localhost:5001/addToCart`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

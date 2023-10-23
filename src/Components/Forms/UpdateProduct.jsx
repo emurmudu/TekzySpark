@@ -1,56 +1,86 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
+
 const UpdateProduct = () => {
-    const { productId } = useParams();
-    const history = history();
-    const [product, setProduct] = useState({
-        productName: "",
-        brand: "",
-        type: "",
+
+
+
+    const { id } = useParams();
+    const [productDetails, setProductDetails] = useState({
+        name: '',
+        brand: '',
+        type: '',
         price: 0,
         rating: 0,
-        description: "",
-        photo: "",
+        photo: '',
+        description: '',
     });
+
+    useEffect(() => {
+        const fetchProductDetails = async () => {
+            try {
+                const response = await fetch(`http://localhost:5001/productById/${id}`);
+                if (!response.ok) {
+                    throw new Error('Failed to fetch product details');
+                }
+                const data = await response.json();
+                setProductDetails(data);
+            } catch (error) {
+                console.error('Error fetching product details:', error);
+            }
+        };
+
+        fetchProductDetails();
+    }, [id]);
 
     const handleUpdateProduct = async (event) => {
         event.preventDefault();
 
+        const form = event.target;
+        const name = form.name.value;
+        const brand = form.brand.value;
+        const type = form.type.value;
+        const price = form.price.value;
+        const rating = form.rating.value;
+        const photo = form.photo.value;
+        const description = form.description.value;
+
+        const updatedProduct = { name, brand, type, price, rating, description, photo };
+        console.log(updatedProduct);
+
         try {
-            const response = await fetch(`https://mission-10-server-1i8zaou17-emurmudu.vercel.app/updateCartItem/${productId}`, {
+            const response = await fetch(`http://localhost:5001/updateProduct/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
-                    'user-email': loggedInUserEmail, // Make sure to define loggedInUserEmail
                 },
-                body: JSON.stringify(product),
+                body: JSON.stringify(updatedProduct),
             });
 
             if (!response.ok) {
-                throw new Error('Failed to update cart item');
+                throw new Error('Failed to update product');
             }
 
-            console.log('Cart item updated successfully');
-            // Redirect to the cart page or other action after a successful update
-            history.push('/myCart');
+            console.log('Product updated successfully');
         } catch (error) {
-            console.error('Error updating cart item:', error);
+            console.error('Error updating product:', error);
         }
     };
-    return (
-        <div className="container mx-auto text-center">
-            <div>
-                <h1 className="text-xl md:text-3xl font-extrabold mb-4 md:mb-6">Update Product</h1>
-                <form onSubmit={handleUpdateProduct}>
 
+    return (
+        <div className=" container mx-auto text-center">
+            <div className=" p-10 md:p-24">
+                <h1 className=" text-xl md:text-3xl font-extrabold mb-4 md:mb-6">Update Product</h1>
+                <form onSubmit={handleUpdateProduct}>
+                    {/* product name & brand name row */}
                     <div className="flex flex-col md:flex-row mb-3 ">
                         <div className="form-control mb-3 md:mb-0 md:w-1/2">
                             <label className="label">
                                 <span className="label-text">Product Name</span>
                             </label>
                             <label className="input-group">
-                                <input type="text" name="name" placeholder="Product Name" className="input input-bordered w-full" />
+                                <input type="text" name="name" value={productDetails.name} placeholder="Product Name" className="input input-bordered w-full" />
                             </label>
                         </div>
                         <div className="form-control md:w-1/2 md:ml-4">
@@ -58,7 +88,7 @@ const UpdateProduct = () => {
                                 <span className="label-text">Brand Name</span>
                             </label>
                             <label className="input-group">
-                                <select className="w-full input input-bordered" placeholder="Brand Name" name="brand" id="">
+                                <select className="w-full input input-bordered" placeholder="Brand Name" name="brand" value={productDetails.brand} id="">
                                     <option value="Samsung">Samsung</option>
                                     <option value="Apple">Apple</option>
                                     <option value="Facebook">Facebook</option>
@@ -76,7 +106,7 @@ const UpdateProduct = () => {
                                 <span className="label-text">Type</span>
                             </label>
                             <label className="input-group">
-                                <select className="w-full input input-bordered" placeholder="Type" name="type" id="">
+                                <select className="w-full input input-bordered" placeholder="Type" name="type" value={productDetails.type} id="">
                                     <option value="Laptop">Laptop</option>
                                     <option value="Mobile">Mobile</option>
                                     <option value="Smart Watch">Smart Watch</option>
@@ -91,7 +121,7 @@ const UpdateProduct = () => {
                                 <span className="label-text">Price</span>
                             </label>
                             <label className="input-group">
-                                <input type="number" name="price" placeholder="Price" className="input input-bordered w-full" />
+                                <input type="number" name="price" value={productDetails.price} placeholder="Price" className="input input-bordered w-full" />
                             </label>
                         </div>
                     </div>
@@ -102,7 +132,7 @@ const UpdateProduct = () => {
                                 <span className="label-text">Rating</span>
                             </label>
                             <label className="input-group">
-                                <input type="number" name="rating" placeholder="Rating" min='1' max='5' className="input input-bordered w-full" />
+                                <input type="number" name="rating" value={productDetails.rating} placeholder="Rating" min='1' max='5' className="input input-bordered w-full" />
                             </label>
                         </div>
                         <div className="form-control md:w-1/2 md:ml-4">
@@ -110,7 +140,7 @@ const UpdateProduct = () => {
                                 <span className="label-text">Photo URL</span>
                             </label>
                             <label className="input-group">
-                                <input type="text" name="photo" placeholder="Photo URL" className="input input-bordered w-full" />
+                                <input type="text" name="photo" value={productDetails.photo} placeholder="Photo URL" className="input input-bordered w-full" />
                             </label>
                         </div>
                     </div>
@@ -121,33 +151,10 @@ const UpdateProduct = () => {
                                 <span className="label-text">Short Description</span>
                             </label>
                             <label className="input-group">
-                                <textarea className="input input-bordered w-full" name="description" id="" cols="50" rows="4"></textarea>
+                                <textarea className="input input-bordered w-full" name="description" value={productDetails.description} id="" cols="50" rows="4"></textarea>
                             </label>
                         </div>
                     </div>
-
-                    {/* product name & brand name row */}
-                    <div className="flex flex-col md:flex-row mb-3">
-                        <div className="form-control mb-3 md:mb-0 md:w-1/2">
-                            <label className="label">
-                                <span className="label-text">Product Name</span>
-                            </label>
-                            <label className="input-group">
-                                <input
-                                    type="text"
-                                    name="productName"
-                                    placeholder="Product Name"
-                                    className="input input-bordered w-full"
-                                    value={product.productName}
-                                    onChange={(e) => setProduct({ ...product, productName: e.target.value })}
-                                />
-                            </label>
-                        </div>
-                        {/* ... other form inputs ... */}
-                    </div>
-
-                    {/* ... rest of your form fields ... */}
-
                     <input type="submit" value="Update Product" className="btn btn-block" />
                 </form>
             </div>

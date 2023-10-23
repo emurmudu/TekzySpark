@@ -8,9 +8,9 @@ import SignIn from "../Users/SignIn";
 import SignUp from "../Users/SignUp";
 import PrivateRoutes from "./PrivateRoutes";
 import BrandDetails from "../Brand/BrandDetails";
-import UpdateProduct from "../Forms/UpdateProduct";
 import ProductDetails from "../Brand/ProductDetails";
 import Users from "../Users/Users";
+import UpdateProduct from "../Forms/UpdateProduct";
 
 const router = createBrowserRouter([
     {
@@ -21,7 +21,8 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
-                // loader: () => fetch('https://mission-10-server-1i8zaou17-emurmudu.vercel.app/product')
+                // loader: () => fetch('http://localhost:5001/product')
+                // http://localhost:5001/
             },
             {
                 path: '/addProduct',
@@ -45,26 +46,28 @@ const router = createBrowserRouter([
             {
                 path: '/users',
                 element: <PrivateRoutes><Users></Users></PrivateRoutes>,
-                loader: () => fetch('https://mission-10-server-1i8zaou17-emurmudu.vercel.app/user')
+                loader: () => fetch('http://localhost:5001/user')
             },
             {
                 path: '/brandDetails/:brandName',
                 element: <BrandDetails></BrandDetails>,
-                loader: ({ params }) => fetch(`https://mission-10-server-1i8zaou17-emurmudu.vercel.app/product/${params.brandName}`),
+                loader: ({ params }) => fetch(`http://localhost:5001/product/${params.brandName}`),
 
             },
 
 
             {
-                path: '/updateProduct',
-                element: <PrivateRoutes><UpdateProduct></UpdateProduct></PrivateRoutes>,
-                // loader: ({ params }) => fetch(`https://mission-10-server-1i8zaou17-emurmudu.vercel.app/getCart/${params.id}`)
-
-            },
+                path: '/updateProduct/:id',
+                element: <PrivateRoutes><UpdateProduct /></PrivateRoutes>,
+                loader: ({ params }) => fetch(`http://localhost:5001/productById/${params.id}`)
+                // loader: ({ params }) => fetch(`http://localhost:5001/productById/${params.id}`)
+                // loader: ({ params }) => fetch(`http://localhost:5001/product/${params.id}`)
+            }
+            ,
             {
                 path: "/productDetails/:id",
                 element: <PrivateRoutes><ProductDetails></ProductDetails></PrivateRoutes>,
-                loader: ({ params }) => fetch(`https://mission-10-server-1i8zaou17-emurmudu.vercel.app/productById/${params.id}`)
+                loader: ({ params }) => fetch(`http://localhost:5001/productById/${params.id}`)
             },
 
 

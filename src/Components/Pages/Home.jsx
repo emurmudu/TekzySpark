@@ -1,7 +1,9 @@
 import Banner from "../Header/Banner";
 import LeftSideBar from "./LeftSideBar";
 import RightSideBar from "./RightSideBar";
-import brandInfo from '../../../src/json/brand.json';
+// import brandInfo from '../../../src/json/brand.json';
+import brandInfo from '/src/brand.json';
+// import brandInfo from '../../../public/brand?json';
 import { NavLink } from "react-router-dom";
 
 

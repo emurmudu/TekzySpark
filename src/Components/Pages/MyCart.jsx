@@ -1,20 +1,18 @@
 import { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
-import { NavLink } from "react-router-dom";
-import UpdateModal from "./UpdateModal";
+import { Link } from "react-router-dom";
+
 
 const MyCart = () => {
     const { loggedInUserEmail } = useContext(AuthContext);
     const [cartItems, setCartItems] = useState([]);
-
-    const [showUpdateModal, setShowUpdateModal] = useState(false);
-    const [updatedCartItem, setUpdatedCartItem] = useState(null);
-
+    console.log('This is cart item', cartItems);
+    const { _id } = cartItems;
 
 
     const fetchCart = async () => {
         try {
-            const response = await fetch(`https://mission-10-server-1i8zaou17-emurmudu.vercel.app/getCart`, {
+            const response = await fetch(`http://localhost:5001/getCart`, {
                 headers: {
                     "user-email": loggedInUserEmail,
                 },
@@ -35,7 +33,7 @@ const MyCart = () => {
 
     const handleDeleteProduct = async (cartItemId) => {
         try {
-            const response = await fetch(`https://mission-10-server-1i8zaou17-emurmudu.vercel.app/deleteCartItem/${cartItemId}`, {
+            const response = await fetch(`http://localhost:5001/deleteCartItem/${cartItemId}`, {
                 method: 'DELETE',
                 headers: {
                     'user-email': loggedInUserEmail,
@@ -53,39 +51,7 @@ const MyCart = () => {
         }
     };
 
-    const handleUpdateProduct = async (cartItemId, updatedQuantity) => {
-        try {
-            const response = await fetch(`https://mission-10-server-1i8zaou17-emurmudu.vercel.app/updateCartItem/${cartItemId}`, {
-                method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'user-email': loggedInUserEmail,
-                },
-                body: JSON.stringify({ quantity: updatedQuantity }),
-            });
 
-            if (!response.ok) {
-                throw new Error('Failed to update cart item');
-            }
-
-            console.log('Cart item updated successfully');
-            fetchCart();
-        } catch (error) {
-            console.error('Error updating cart item:', error);
-        }
-    };
-
-
-    const handleUpdateClick = (cartItem) => {
-        setUpdatedCartItem(cartItem);
-        setShowUpdateModal(true);
-    };
-
-    const handleUpdate = (updatedField) => {
-        if (updatedCartItem) {
-            handleUpdateProduct(updatedCartItem._id, { fieldToUpdate: updatedField });
-        }
-    };
 
     return (
 
@@ -93,11 +59,6 @@ const MyCart = () => {
         <div className=" p-4">
             <h1 className="text-2xl font-bold mb-4">Your Cart</h1>
 
-            <UpdateModal
-                isOpen={showUpdateModal}
-                onClose={() => setShowUpdateModal(false)}
-                onUpdate={handleUpdate}
-            />
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                 {cartItems.map(item => (
                     <div key={item._id} className=" border p-4 rounded-md shadow-md">
@@ -113,10 +74,12 @@ const MyCart = () => {
 
                         <div className=" flex flex-row gap-2 justify-between mt-3">
 
-                            <button onClick={() => handleUpdateClick(item)} className="btn btn-outline">
-                                Update
-                            </button>
+                            {/* <Link to={`/updateProduct/${item._id}`}> */}
+                            <Link to={`/updateProduct/${item.product._id}`}>
+                                <button className="btn btn-outline">Update</button>
+                            </Link>
                             <button onClick={() => handleDeleteProduct(item._id)} className="btn btn-outline">Delete</button>
+
 
                         </div>
                     </div>

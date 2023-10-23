@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "image_url": "https://i.ibb.co/BCZYYrb/apple-brand.jpg",
+        "brand_name": "Apple"
+    },
+    {
+        "id": 2,
+        "image_url": "https://i.ibb.co/RjxjNxn/cannon-brand.jpg",
+        "brand_name": "Canon"
+    },
+    {
+        "id": 3,
+        "image_url": "https://i.ibb.co/fCy2kPN/google-brand.jpg",
+        "brand_name": "Google"
+    },
+    {
+        "id": 4,
+        "image_url": "https://i.ibb.co/zQrxzF1/samsung-brand.jpg",
+        "brand_name": "Samsung"
+    },
+    {
+        "id": 5,
+        "image_url": "https://i.ibb.co/TmHG0sH/facebook-brand.jpg",
+        "brand_name": "Facebook"
+    },
+    {
+        "id": 6,
+        "image_url": "https://i.ibb.co/hgLbKD7/DJI-brand.jpg",
+        "brand_name": "DJI"
+    }
+]
