@@ -4,32 +4,9 @@ import { useEffect, useState } from "react";
 
 
 const BrandDetails = () => {
+
+
     // const singleProduct = useLoaderData();
-    // const { brandName } = useParams();
-    // const [products, setProducts] = useState([]);
-    // const [isLoading, setIsLoading] = useState(true);
-
-    // useEffect(() => {
-    //     const fetchProducts = async () => {
-
-    //         try {
-    //             const response = await fetch(`http://localhost:5001/product/${brandName}`);
-    //             if (!response.ok) {
-    //                 throw new Error('Failed to fetch products');
-    //             }
-    //             const data = await response.json();
-    //             setProducts(data);
-    //         } catch (error) {
-    //             console.error('Error fetching products:', error);
-    //         } finally {
-    //             setIsLoading(false);
-    //         }
-    //     };
-
-    //     fetchProducts();
-    // }, [brandName]);
-
-    const singleProduct = useLoaderData();
     const { brandName } = useParams();
     const [products, setProducts] = useState([]);
     const [isLoading, setIsLoading] = useState(true);

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
 const UpdateProduct = () => {
@@ -61,12 +62,27 @@ const UpdateProduct = () => {
             if (!response.ok) {
                 throw new Error('Failed to update product');
             }
+            Swal.fire({
+                title: 'Success!',
+                text: 'Product Updated Successfully',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            })
 
             console.log('Product updated successfully');
         } catch (error) {
             console.error('Error updating product:', error);
         }
     };
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setProductDetails((prevDetails) => ({
+            ...prevDetails,
+            [name]: value,
+        }));
+    };
+
 
     return (
         <div className=" container mx-auto text-center">
@@ -80,7 +96,7 @@ const UpdateProduct = () => {
                                 <span className="label-text">Product Name</span>
                             </label>
                             <label className="input-group">
-                                <input type="text" name="name" value={productDetails.name} placeholder="Product Name" className="input input-bordered w-full" />
+                                <input type="text" name="name" value={productDetails.name} onChange={handleInputChange} placeholder="Product Name" className="input input-bordered w-full" />
                             </label>
                         </div>
                         <div className="form-control md:w-1/2 md:ml-4">
@@ -88,7 +104,7 @@ const UpdateProduct = () => {
                                 <span className="label-text">Brand Name</span>
                             </label>
                             <label className="input-group">
-                                <select className="w-full input input-bordered" placeholder="Brand Name" name="brand" value={productDetails.brand} id="">
+                                <select className="w-full input input-bordered" placeholder="Brand Name" name="brand" value={productDetails.brand} onChange={handleInputChange} id="">
                                     <option value="Samsung">Samsung</option>
                                     <option value="Apple">Apple</option>
                                     <option value="Facebook">Facebook</option>
@@ -106,7 +122,7 @@ const UpdateProduct = () => {
                                 <span className="label-text">Type</span>
                             </label>
                             <label className="input-group">
-                                <select className="w-full input input-bordered" placeholder="Type" name="type" value={productDetails.type} id="">
+                                <select className="w-full input input-bordered" placeholder="Type" name="type" value={productDetails.type} onChange={handleInputChange} id="">
                                     <option value="Laptop">Laptop</option>
                                     <option value="Mobile">Mobile</option>
                                     <option value="Smart Watch">Smart Watch</option>
@@ -121,7 +137,7 @@ const UpdateProduct = () => {
                                 <span className="label-text">Price</span>
                             </label>
                             <label className="input-group">
-                                <input type="number" name="price" value={productDetails.price} placeholder="Price" className="input input-bordered w-full" />
+                                <input type="number" name="price" value={productDetails.price} onChange={handleInputChange} placeholder="Price" className="input input-bordered w-full" />
                             </label>
                         </div>
                     </div>
@@ -132,7 +148,7 @@ const UpdateProduct = () => {
                                 <span className="label-text">Rating</span>
                             </label>
                             <label className="input-group">
-                                <input type="number" name="rating" value={productDetails.rating} placeholder="Rating" min='1' max='5' className="input input-bordered w-full" />
+                                <input type="number" name="rating" value={productDetails.rating} onChange={handleInputChange} placeholder="Rating" min='1' max='5' className="input input-bordered w-full" />
                             </label>
                         </div>
                         <div className="form-control md:w-1/2 md:ml-4">
@@ -140,7 +156,7 @@ const UpdateProduct = () => {
                                 <span className="label-text">Photo URL</span>
                             </label>
                             <label className="input-group">
-                                <input type="text" name="photo" value={productDetails.photo} placeholder="Photo URL" className="input input-bordered w-full" />
+                                <input type="text" name="photo" value={productDetails.photo} onChange={handleInputChange} placeholder="Photo URL" className="input input-bordered w-full" />
                             </label>
                         </div>
                     </div>
@@ -151,7 +167,7 @@ const UpdateProduct = () => {
                                 <span className="label-text">Short Description</span>
                             </label>
                             <label className="input-group">
-                                <textarea className="input input-bordered w-full" name="description" value={productDetails.description} id="" cols="50" rows="4"></textarea>
+                                <textarea className="input input-bordered w-full" name="description" value={productDetails.description} onChange={handleInputChange} id="" cols="50" rows="4"></textarea>
                             </label>
                         </div>
                     </div>

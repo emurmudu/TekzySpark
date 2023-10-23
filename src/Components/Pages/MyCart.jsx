@@ -1,6 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
 const MyCart = () => {
@@ -32,24 +33,66 @@ const MyCart = () => {
     }, [loggedInUserEmail]);
 
     const handleDeleteProduct = async (cartItemId) => {
-        try {
-            const response = await fetch(`http://localhost:5001/deleteCartItem/${cartItemId}`, {
-                method: 'DELETE',
-                headers: {
-                    'user-email': loggedInUserEmail,
-                },
-            });
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!',
+            position: 'top',
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                try {
+                    const response = await fetch(`http://localhost:5001/deleteCartItem/${cartItemId}`, {
+                        method: 'DELETE',
+                        headers: {
+                            'user-email': loggedInUserEmail,
+                        },
+                    });
 
-            if (!response.ok) {
-                throw new Error('Failed to delete cart item');
+                    if (!response.ok) {
+                        throw new Error('Failed to delete cart item');
+                    }
+
+                    Swal.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                    )
+
+                    console.log('Cart item deleted successfully');
+                    fetchCart();
+                } catch (error) {
+                    console.error('Error deleting cart item:', error);
+                }
             }
-
-            console.log('Cart item deleted successfully');
-            fetchCart();
-        } catch (error) {
-            console.error('Error deleting cart item:', error);
-        }
+        });
     };
+
+
+
+
+
+    //     try {
+    //         const response = await fetch(`http://localhost:5001/deleteCartItem/${cartItemId}`, {
+    //             method: 'DELETE',
+    //             headers: {
+    //                 'user-email': loggedInUserEmail,
+    //             },
+    //         });
+
+    //         if (!response.ok) {
+    //             throw new Error('Failed to delete cart item');
+    //         }
+
+    //         console.log('Cart item deleted successfully');
+    //         fetchCart();
+    //     } catch (error) {
+    //         console.error('Error deleting cart item:', error);
+    //     }
+    // };
 
 
 
