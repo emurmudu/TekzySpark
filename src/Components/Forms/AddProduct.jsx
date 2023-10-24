@@ -17,7 +17,7 @@ const AddProduct = () => {
         console.log(newProduct);
 
 
-        fetch('http://localhost:5001/product', {
+        fetch('https://mission-10-server-7ycrmmizg-emurmudu.vercel.app/product', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
