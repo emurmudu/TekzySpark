@@ -5,7 +5,7 @@ Live website link :
 
 ## Project features : ##
 
-* Project Category :
+* Project Category : Technology and Electronics
 This project is focused on Technology and Electronics category. In this category six brand products are displayed. Every brand products are different to each other. In this category there have six type of products. The products types are: Laptop of Apple brand, Mobile of Samsung brand, Camera of Canon brand, Smart Watch of Google brand, Mini Drone of DJI brand and VR Goggles of Facebook brand.
 
 * Design Layout :
