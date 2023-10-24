@@ -30,7 +30,7 @@ const SignIn = () => {
                     email,
                     lastLogged: result.user?.metadata?.lastSignInTime
                 }
-                // update last logged at in the database
+
                 fetch('http://localhost:5001/user', {
                     method: 'PATCH',
                     headers: {

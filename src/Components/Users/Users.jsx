@@ -6,7 +6,6 @@ const Users = () => {
     const [users, setUsers] = useState(loadedUsers)
 
     const handleDelete = id => {
-        //make sure user is confirmed to delete
         fetch(`http://localhost:5001/user/${id}`, {
             method: 'DELETE'
 
@@ -15,7 +14,6 @@ const Users = () => {
             .then(data => {
                 if (data.deletedCount > 0) {
                     console.log('delete successfully');
-                    // remove the user from the UI
                     const remainingUsers = users.filter(user => user._id !== id);
                     setUsers(remainingUsers);
                 }

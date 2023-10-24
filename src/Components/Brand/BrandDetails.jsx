@@ -1,4 +1,4 @@
-import { NavLink, useLoaderData, useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import Slider from "./Slider";
 import { useEffect, useState } from "react";
 

@@ -34,7 +34,7 @@ const MyCart = () => {
 
     const handleDeleteProduct = async (cartItemId) => {
         Swal.fire({
-            title: 'Are you sure?',
+            title: 'Sure to delete?',
             text: "You won't be able to revert this!",
             icon: 'warning',
             showCancelButton: true,
@@ -58,7 +58,7 @@ const MyCart = () => {
 
                     Swal.fire(
                         'Deleted!',
-                        'Your file has been deleted.',
+                        'Your product has been deleted.',
                         'success'
                     )
 
@@ -70,31 +70,6 @@ const MyCart = () => {
             }
         });
     };
-
-
-
-
-
-    //     try {
-    //         const response = await fetch(`http://localhost:5001/deleteCartItem/${cartItemId}`, {
-    //             method: 'DELETE',
-    //             headers: {
-    //                 'user-email': loggedInUserEmail,
-    //             },
-    //         });
-
-    //         if (!response.ok) {
-    //             throw new Error('Failed to delete cart item');
-    //         }
-
-    //         console.log('Cart item deleted successfully');
-    //         fetchCart();
-    //     } catch (error) {
-    //         console.error('Error deleting cart item:', error);
-    //     }
-    // };
-
-
 
     return (
 

@@ -4,16 +4,12 @@ import LeftSideBar from "./LeftSideBar";
 import RightSideBar from "./RightSideBar";
 // import brandInfo from '../../../src/json/brand.json';
 import brandInfo from '/src/brand.json';
-// import brandInfo from '../../../public/brand?json';
 import { NavLink } from "react-router-dom";
 
 
 
 const Home = () => {
 
-
-
-    // console.log(products);
     return (
         <div className="container mx-auto p-4 dark:text-white dark:bg-zinc-800">
 
