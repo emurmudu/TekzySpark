@@ -2,10 +2,12 @@
 # TekzySpark #
 Live website link : https://mission-10-client.web.app/
 
+## Project focus point : ##
+* An e-commerce platform for technology products. Users can browse, search, and purchase tech gadgets.
 
 ## Project features : ##
 
-* Project Category : Technology and Electronics
+* About Project : 
 This project is focused on Technology and Electronics category. In this category six brand products are displayed. Every brand products are different to each other. In this category there have six type of products. The products types are: Laptop of Apple brand, Mobile of Samsung brand, Camera of Canon brand, Smart Watch of Google brand, Mini Drone of DJI brand and VR Goggles of Facebook brand.
 
 * Design Layout :
@@ -21,5 +23,7 @@ In this project there have protected login system. Without sign in any visitor c
 * Deployment and hosting :
 Client side data is hosted on firebase and live website link is available on the above of this page. server side data is hosted on vercel.
 
-## N.B: Please reload once more if link not works properly : ##
+* Technology used :
+react, tailwind css, firebase, react icons, react-router-dom, react-toastify, slick-carousel, react-slick, emailJS.
+
 
