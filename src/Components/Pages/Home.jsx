@@ -1,45 +1,36 @@
-import { useEffect, useState } from "react";
+import React from "react";
 import Banner from "../Header/Banner";
-import LeftSideBar from "./LeftSideBar";
-import RightSideBar from "./RightSideBar";
-// import brandInfo from '../../../src/json/brand.json';
-import brandInfo from '/src/brand.json';
+import brandInfo from '/src/brand.json'; // Make sure the path is correct
 import { NavLink } from "react-router-dom";
-
-
+import Contact from "./Contact";
+import New from "./New";
 
 const Home = () => {
-
     return (
-        <div className="container mx-auto p-4 dark:text-white dark:bg-zinc-800">
+        <div className="container mx-auto p-4 dark:text-white  ">
+            <Banner />
+            {/* <New /> */}
 
-            <Banner></Banner>
+            <h1 className="md:text-3xl text-2xl text-center pb-2 pt-4 md:pb-4 bg-gray-300 dark:bg-zinc-700">OUR BRANDS</h1>
 
-            <div className=" grid grid-cols-1 md:grid-cols-4 gap-2 ">
-                <div className="">
-                    <LeftSideBar></LeftSideBar>
-                </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-3 bg-gray-300 dark:bg-zinc-700">
+                {brandInfo.map((brand) => (
+                    <div key={brand.id} className="overflow-hidden rounded-lg">
+                        <NavLink to={`/brandDetails/${brand.brand_name}`}>
+                            <img
+                                src={brand.image_url}
+                                alt={brand.brand_name}
+                                className="w-full h-auto md:h-64"
+                            />
+                            <p className="font-bold text-xl mb-2 text-center">{brand.brand_name}</p>
+                        </NavLink>
+                    </div>
+                ))}
+            </div>
 
-                <div className="md:col-span-2 grid grid-cols-1 md:grid-cols-1 gap-2">
-                    <h1 className=" md:text-3xl text-2xl text-center mb-2 md:mb-4">OUR BRANDS</h1>
-                    {brandInfo.map(brand => (
-                        <div key={brand.id} className="overflow-hidden rounded-lg">
-                            <NavLink to={`/brandDetails/${brand.brand_name}`}>
-                                <img
-                                    src={brand.image_url}
-                                    alt={brand.brand_name}
-                                    className="w-full h-auto"
-                                />
-                                <p className="font-bold text-xl mb-2 text-center">{brand.brand_name}</p>
-                            </NavLink>
-
-                        </div>
-                    ))}
-
-                </div>
-                <div className="">
-                    <RightSideBar></RightSideBar>
-                </div>
+            <New />
+            <div>
+                <Contact />
             </div>
         </div>
     );

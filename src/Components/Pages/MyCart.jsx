@@ -13,7 +13,7 @@ const MyCart = () => {
 
     const fetchCart = async () => {
         try {
-            const response = await fetch(`https://mission-10-server-7ycrmmizg-emurmudu.vercel.app/getCart`, {
+            const response = await fetch(`http://localhost:5001/getCart`, {
                 headers: {
                     "user-email": loggedInUserEmail,
                 },
@@ -45,7 +45,7 @@ const MyCart = () => {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 try {
-                    const response = await fetch(`https://mission-10-server-7ycrmmizg-emurmudu.vercel.app/deleteCartItem/${cartItemId}`, {
+                    const response = await fetch(`http://localhost:5001/deleteCartItem/${cartItemId}`, {
                         method: 'DELETE',
                         headers: {
                             'user-email': loggedInUserEmail,

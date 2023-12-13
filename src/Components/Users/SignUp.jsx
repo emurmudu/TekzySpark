@@ -44,7 +44,7 @@ const SignUp = () => {
 
                 const createAt = result.user?.metadata?.creationTime;
                 const user = { name, email, password, createAt: createAt };
-                fetch('https://mission-10-server-7ycrmmizg-emurmudu.vercel.app/user', {
+                fetch('http://localhost:5001/user', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

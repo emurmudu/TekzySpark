@@ -15,7 +15,7 @@ const BrandDetails = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await fetch(`https://mission-10-server-7ycrmmizg-emurmudu.vercel.app/product/${brandName}`);
+                const response = await fetch(`http://localhost:5001/product/${brandName}`);
                 if (!response.ok) {
                     throw new Error('Failed to fetch products');
                 }
