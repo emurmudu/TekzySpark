@@ -17,7 +17,7 @@ const ProductDetails = () => {
     useEffect(() => {
         const fetchProductDetails = async () => {
             try {
-                const response = await fetch(`http://localhost:5001/productById/${id}`);
+                const response = await fetch(`https://mission-10-server-eight.vercel.app/productById/${id}`);
                 if (!response.ok) {
                     throw new Error("Failed to fetch product details");
                 }
@@ -36,7 +36,7 @@ const ProductDetails = () => {
     const addToCart = async () => {
         try {
             setIsAddingToCart(true);
-            const response = await fetch(`http://localhost:5001/addToCart`, {
+            const response = await fetch(`https://mission-10-server-eight.vercel.app/addToCart`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

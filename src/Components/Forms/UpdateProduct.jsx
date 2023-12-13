@@ -21,7 +21,7 @@ const UpdateProduct = () => {
     useEffect(() => {
         const fetchProductDetails = async () => {
             try {
-                const response = await fetch(`http://localhost:5001/productById/${id}`);
+                const response = await fetch(`https://mission-10-server-eight.vercel.app/productById/${id}`);
                 if (!response.ok) {
                     throw new Error('Failed to fetch product details');
                 }
@@ -51,7 +51,7 @@ const UpdateProduct = () => {
         console.log(updatedProduct);
 
         try {
-            const response = await fetch(`http://localhost:5001/updateProduct/${id}`, {
+            const response = await fetch(`https://mission-10-server-eight.vercel.app/updateProduct/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

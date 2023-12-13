@@ -45,12 +45,12 @@ const router = createBrowserRouter([
             {
                 path: '/users',
                 element: <PrivateRoutes><Users></Users></PrivateRoutes>,
-                loader: () => fetch('http://localhost:5001/user')
+                loader: () => fetch('https://mission-10-server-eight.vercel.app/user')
             },
             {
                 path: '/brandDetails/:brandName',
                 element: <BrandDetails></BrandDetails>,
-                loader: ({ params }) => fetch(`http://localhost:5001/product/${params.brandName}`),
+                loader: ({ params }) => fetch(`https://mission-10-server-eight.vercel.app/product/${params.brandName}`),
 
             },
 
@@ -58,14 +58,14 @@ const router = createBrowserRouter([
             {
                 path: '/updateProduct/:id',
                 element: <PrivateRoutes><UpdateProduct /></PrivateRoutes>,
-                loader: ({ params }) => fetch(`http://localhost:5001/productById/${params.id}`)
+                loader: ({ params }) => fetch(`https://mission-10-server-eight.vercel.app/productById/${params.id}`)
 
             }
             ,
             {
                 path: "/productDetails/:id",
                 element: <PrivateRoutes><ProductDetails></ProductDetails></PrivateRoutes>,
-                loader: ({ params }) => fetch(`http://localhost:5001/productById/${params.id}`)
+                loader: ({ params }) => fetch(`https://mission-10-server-eight.vercel.app/productById/${params.id}`)
             },
 
 
