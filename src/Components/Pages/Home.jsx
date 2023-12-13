@@ -11,7 +11,8 @@ const Home = () => {
             <Banner />
             {/* <New /> */}
 
-            <h1 className="md:text-3xl text-2xl text-center pb-2 pt-4 md:pb-4 bg-gray-300 dark:bg-zinc-700">OUR BRANDS</h1>
+            <h1 className="md:text-3xl font-bold text-xl lg:text-4xl text-center  pb-2 pt-4 md:pb-4 bg-gray-300 dark:bg-zinc-700">OUR BRANDS</h1>
+
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-3 bg-gray-300 dark:bg-zinc-700">
                 {brandInfo.map((brand) => (

@@ -58,7 +58,7 @@ const New = () => {
 
     return (
         <div className="p-8 bg-gray-400 dark:bg-zinc-600 ">
-            <h1 className="text-center text-lg md:text-3xl lg:text-4xl py-8">New Arrivals</h1>
+            <h1 className="font-bold mb-8 text-center text-xl md:text-2xl lg:text-4xl pt-8 pb-4">New Arrivals</h1>
             <Slider {...settings}>
                 {images.map((image, index) => (
                     <div key={index} className="relative">
