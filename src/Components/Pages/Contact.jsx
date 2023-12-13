@@ -35,7 +35,7 @@ export const Contact = () => {
 
     return (
 
-        <div data-aos="fade-up" data-aos-duration="1200" className=" bg-gray-300 mx-auto dark:text-gray-100 dark:bg-zinc-700">
+        <div className=" bg-gray-300 mx-auto dark:text-gray-100 dark:bg-zinc-700">
 
             <h2 className=" font-bold mb-8 text-center text-xl md:text-2xl lg:text-4xl pt-8 pb-4">Contact Us</h2>
 
